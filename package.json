@@ -1,0 +1,50 @@
+{
+  "name": "medicine",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "PORT=3001 next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.6.6",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@heroicons/react": "^1.0.5",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "axios": "^0.21.1",
+    "chart.js": "^3.9.1",
+    "formik": "^2.2.9",
+    "framer-motion": "^6",
+    "heroicons": "^1.0.4",
+    "js-cookie": "^3.0.1",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
+    "next": "^12.1.6",
+    "react": "17.0.2",
+    "react-chartjs-2": "^4.3.1",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-moment": "^1.1.1",
+    "react-query": "^3.34.19"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@types/react": "17.0.19",
+    "autoprefixer": "^10.3.1",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.0",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.19",
+    "typescript": "4.3.5"
+  },
+  "resolutions": {
+      "autoprefixer": "10.4.5"
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+ }
+}
