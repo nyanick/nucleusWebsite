@@ -104,30 +104,28 @@ const ParameterModal: React.FC<Props> = ({setOpen, parameterId, setNewParameter}
                         }}
                         onSubmit={async (values) => {
                             if (parameterId) {
-                                console.log(values);
                                 updateParameterMutation.mutate({
-                                    temperature: parseFloat((values.temperature || values.temperature ===0 ? values.temperature : -99 ) as string),
-                                    weight: parseFloat((values.weight || values.weight ===0 ? values.weight : -99) as string),
-                                    height: parseFloat((values.height || values.height ===0 ? values.height : -99) as string),
-                                    pressure: parseFloat((values.pressure || values.pressure ===0 ? values.pressure : -99) as string),
-                                    diastolicPressure: parseFloat((values.diastolicPressure || values.diastolicPressure ===0 ? values.diastolicPressure : -99) as string),
-                                    systolicPressure: parseFloat((values.systolicPressure || values.systolicPressure ===0 ? values.systolicPressure : -99) as string),
-                                    bloodGlucose: parseFloat((values.bloodGlucose || values.bloodGlucose ===0 ? values.bloodGlucose : -99) as string),
-                                    fastingBloodGlucose: parseFloat((values.fastingBloodGlucose || values.fastingBloodGlucose ===0 ? values.fastingBloodGlucose : -99)as string),
+                                    temperature: parseFloat((values.temperature || values.temperature === 0 ? values.temperature : -99 ) as string),
+                                    weight: parseFloat((values.weight || values.weight === 0 ? values.weight : -99) as string),
+                                    height: parseFloat((values.height || values.height === 0 ? values.height : -99) as string),
+                                    pressure: parseFloat((values.pressure || values.pressure === 0 ? values.pressure : -99) as string),
+                                    diastolicPressure: parseFloat((values.diastolicPressure || values.diastolicPressure === 0 ? values.diastolicPressure : -99) as string),
+                                    systolicPressure: parseFloat((values.systolicPressure || values.systolicPressure === 0 ? values.systolicPressure : -99) as string),
+                                    bloodGlucose: parseFloat((values.bloodGlucose || values.bloodGlucose === 0 ? values.bloodGlucose : -99) as string),
+                                    fastingBloodGlucose: parseFloat((values.fastingBloodGlucose || values.fastingBloodGlucose === 0 ? values.fastingBloodGlucose : -99)as string),
                                     medicalCareId: router.query.id as string,
                                     parameterId: parameterId
                                 } as IParameter)
                             } else {
-                                console.log(values);
                                 createParameterMutation.mutate({
-                                    temperature: parseFloat((values.temperature ) as string),
-                                    weight: parseFloat((values.weight ) as string),
-                                    height: parseFloat((values.height ) as string),
-                                    pressure: parseFloat((values.pressure ) as string),
-                                    diastolicPressure: parseFloat((values.diastolicPressure ) as string),
-                                    systolicPressure: parseFloat((values.systolicPressure ) as string),
-                                    bloodGlucose: parseFloat((values.bloodGlucose ) as string),
-                                    fastingBloodGlucose: parseFloat((values.fastingBloodGlucose ) as string),
+                                    temperature: parseFloat((values.temperature || values.temperature === 0 ? values.temperature : -99 ) as string),
+                                    weight: parseFloat((values.weight || values.weight === 0 ? values.weight : -99) as string),
+                                    height: parseFloat((values.height || values.height === 0 ? values.height : -99) as string),
+                                    pressure: parseFloat((values.pressure || values.pressure === 0 ? values.pressure : -99) as string),
+                                    diastolicPressure: parseFloat((values.diastolicPressure || values.diastolicPressure === 0 ? values.diastolicPressure : -99) as string),
+                                    systolicPressure: parseFloat((values.systolicPressure || values.systolicPressure === 0 ? values.systolicPressure : -99) as string),
+                                    bloodGlucose: parseFloat((values.bloodGlucose || values.bloodGlucose === 0 ? values.bloodGlucose : -99) as string),
+                                    fastingBloodGlucose: parseFloat((values.fastingBloodGlucose || values.fastingBloodGlucose === 0 ? values.fastingBloodGlucose : -99)as string),
                                     medicalCareId: router.query.id as string,
                                 } as IParameter)
                             }

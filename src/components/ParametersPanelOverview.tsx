@@ -35,41 +35,41 @@ const ParametersPanelOverview: React.FC<Props> = ({loading, parameters}) => {
                                     <div className="flex items-center space-x-1">
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Température ºC</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.temperature}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.temperature !== -99 ?parameter.temperature : 'N/A'}</span>
                                         </div>
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600  flex-1'>Poids (Kg)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.weight}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.weight !== -99 ?parameter.weight : 'N/A'}</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-1">
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Taille (Cm)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.height}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.height !== -99 ?parameter.height : 'N/A'}</span>
                                         </div>
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Pression Artérielle (MmHg)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.pressure}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.pressure  !== -99 ?parameter.pressure : 'N/A'}</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-1">
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Pression Artérielle Systolique (MmHg)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.systolicPressure}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.diastolicPressure  !== -99 ?parameter.diastolicPressure : 'N/A'}</span>
                                         </div>
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Pression Artérielle Diastolique (MmHg)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.diastolicPressure}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.systolicPressure  !== -99 ?parameter.systolicPressure : 'N/A'}</span>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-1">
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Glycémie à Jeûn (g/l)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.fastingBloodGlucose}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.bloodGlucose  !== -99 ?parameter.bloodGlucose : 'N/A'}</span>
                                         </div>
                                         <div className='flex-1 flex items-center space-x-2 border rounded-md p-2 py-1'>
                                             <span className='text-sm text-gray-600 flex-1'>Glycémie à Jeûn (g/l)</span>
-                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter.bloodGlucose}</span>
+                                            <span className='text-gray-100 text-sm rounded-md bg-green-500 flex items-center justify-center px-1'>{parameter &&  parameter.fastingBloodGlucose  !== -99 ?parameter.fastingBloodGlucose : 'N/A'}</span>
                                         </div>
                                     </div>
                                 </div>
