@@ -87,7 +87,6 @@ const Consultations: NextPage = ({}) => {
         setUserLoading(false)
     }, [patientLoadingError])
 
-    console.log(currentHospital);
 
     return (
         <>
@@ -124,8 +123,6 @@ const Consultations: NextPage = ({}) => {
                         </div>
                     </div>
                     <div className='mt-8'>
-                    {console.log('Hello yanick')}
-                    {console.log(JSON.parse(currentHospital)?.hospitalId)}
                     {consultations.filter(e=> e.hospitalId == JSON.parse(currentHospital)?.hospitalId ).map((consultation, i) => (
                             <>
                                 <Consultation
