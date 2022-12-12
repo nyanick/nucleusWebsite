@@ -87,6 +87,8 @@ const Consultations: NextPage = ({}) => {
         setUserLoading(false)
     }, [patientLoadingError])
 
+    console.log(currentHospital);
+
     return (
         <>
             {isOpen && <CreateConsultationDialog
@@ -122,7 +124,9 @@ const Consultations: NextPage = ({}) => {
                         </div>
                     </div>
                     <div className='mt-8'>
-                    {consultations.filter(e=> e.hospitalId.toString() == currentHospital?.hospitalId?.toString() ).map((consultation, i) => (
+                    {console.log('Hello yanick')}
+                    {console.log(JSON.parse(currentHospital)?.hospitalId)}
+                    {consultations.filter(e=> e.hospitalId == JSON.parse(currentHospital)?.hospitalId ).map((consultation, i) => (
                             <>
                                 <Consultation
                                     key={consultation.consultationId}
