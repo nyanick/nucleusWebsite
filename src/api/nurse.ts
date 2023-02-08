@@ -11,3 +11,8 @@ export const findNurseByNurseId = async ({queryKey}) => {
     const {data} = await axios.get<INurse>(`${apiRoutes.NURSES}/${queryKey[1]}`);
     return data;
 }
+
+export const findNursesByHospitalId = async ({queryKey}) => {
+    const {data} = await axios.get<INurse[]>(`${apiRoutes.NURSES}/hospitals/${queryKey[1]}`);
+    return data;
+}

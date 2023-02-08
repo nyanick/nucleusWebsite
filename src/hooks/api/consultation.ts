@@ -4,6 +4,7 @@ import {
     closeConsultation,
     createConsultation,
     findConsultation,
+    findConsultationsByHospital,
     findDoctorConsultations,
     findPatientConsultations,
     updateConsultation
@@ -37,4 +38,10 @@ export const useUpdateConsultation = () => {
 
 export const useCloseConsultation = () => {
     return useMutation((consultationId: string) => closeConsultation(consultationId))
+}
+
+export const useFindConsultationsByHospital = (hospitalId: string) => {
+    return useQuery(["consultations", hospitalId], findConsultationsByHospital, {
+        enabled: !!hospitalId
+    })
 }

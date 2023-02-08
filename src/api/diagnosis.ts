@@ -46,3 +46,8 @@ export const updateDiagnosis = async (diagnosis: IDiagnosis) => {
     const {data} = await axios.put<IDiagnosis>(apiRoutes.DIAGNOSIS, diagnosis);
     return data;
 }
+
+export const findDiagnosisByHospitalId = async ({queryKey}) => {
+    const {data} = await axios.get<IDiagnosis[]>(`${apiRoutes.DIAGNOSIS}/hospital/${queryKey[1]}`);
+    return data;
+}

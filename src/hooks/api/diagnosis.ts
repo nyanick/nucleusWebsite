@@ -1,6 +1,13 @@
 import {useMutation, useQuery} from "react-query";
 import {IDiagnosis, IDiagnosisCreate} from "../../types/diagnosis";
-import {createDiagnosis, findDiagnosis, getDiagnosis, getDiagnosisByPatientId, updateDiagnosis} from "../../api/diagnosis";
+import {
+    createDiagnosis,
+    findDiagnosis,
+    findDiagnosisByHospitalId,
+    getDiagnosis,
+    getDiagnosisByPatientId,
+    updateDiagnosis
+} from "../../api/diagnosis";
 
 export const useGetDiagnosis = (consultationId, size, page) => {
     return useQuery(["diagnosis", consultationId, {size, page}], getDiagnosis)
@@ -24,4 +31,10 @@ export const useCreateDiagnosis = () => {
 
 export const useUpdateDiagnosis = () => {
     return useMutation((diagnosis: IDiagnosis) => updateDiagnosis(diagnosis))
+}
+
+export const useFindDiagnosisByHospitalId = (hospitalId: string) => {
+    return useQuery(["diagnosis", hospitalId], findDiagnosisByHospitalId, {
+        enabled: !!hospitalId
+    })
 }

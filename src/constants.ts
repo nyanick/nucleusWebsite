@@ -38,11 +38,13 @@ const apiRoutes = {
     GET_USER: (id) => `/users/${id}`,
     LOGIN: '/users/login',
     GET_USER_AVATAR: (uuid) => `${process.env.NEXT_PUBLIC_API_URL}/files/${uuid}`,
+    MEDICAL_CARES_LIST: '/medical-cares-list',
 }
 const userRoles = {
     ROLE_PATIENT: 'ROLE_PATIENT',
     ROLE_NURSE: 'ROLE_NURSE',
     ROLE_ANALYST: 'ROLE_ANALYST',
     ROLE_DOCTOR: 'ROLE_DOCTOR',
+    ROLE_ADMIN_HOPSITAL: 'ROLE_ADMIN_HOPSITAL'
 }
 export {appRoutes, apiRoutes, userRoles}

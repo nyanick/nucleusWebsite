@@ -1,7 +1,9 @@
 import {useQuery} from "react-query";
-import {findDoctorByDoctorId, findDoctorByUserId} from "../../api/doctor";
+import {findDoctorByDoctorId, findDoctorByUserId, findDoctorsByHospitalId} from "../../api/doctor";
 import {findUser} from "../../api/user";
 import {IDoctor, IDoctorWithDetails} from "../../types/doctor";
+import axios from "../../api/axios";
+import {apiRoutes} from "../../constants";
 
 export const useFindDoctorByUserId = (doctorUserId: string) => {
     return useQuery(["doctors", doctorUserId], findDoctorByUserId, {
@@ -24,5 +26,11 @@ export const useFindDoctorWithDetails = (doctor: IDoctor) => {
                 ...user
             } as IDoctorWithDetails
         }
+    })
+}
+
+export const  useFindDoctorsByHospitalId = (hospitalId: string) => {
+    return useQuery(["hospitals", hospitalId], findDoctorsByHospitalId, {
+        enabled: !!hospitalId
     })
 }

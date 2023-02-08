@@ -11,4 +11,5 @@ export type IUser = {
     city: string
     country: string
     userId: string
+    hospitalId: string
 }

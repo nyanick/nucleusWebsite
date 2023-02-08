@@ -51,3 +51,8 @@ export const closeConsultation = async (consultationId) => {
     const {data} = await axios.put<void>(`${apiRoutes.CONSULTATIONS}/${consultationId}/close`);
     return data;
 }
+
+export const findConsultationsByHospital = async ({queryKey}) => {
+    const {data} = await axios.get<IConsultation[]>(`${apiRoutes.CONSULTATIONS}/hospital/${queryKey[1]}`);
+    return data;
+}
