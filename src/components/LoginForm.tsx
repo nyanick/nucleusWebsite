@@ -35,7 +35,7 @@ const LoginForm: React.FC<Props> = ({isLoading, login}) => {
                             <InputField
                                 className='py-4'
                                 name='email'
-                                placeholder="Adresse email"/>
+                                placeholder="Identifiant"/>
                             <InputField
                                 className='!mt-4'
                                 name='password'

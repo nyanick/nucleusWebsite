@@ -9,6 +9,7 @@ export const deleteCookie = (cookieName: string) => Cookies.remove(cookieName)
 export const initialState = {
     authToken: typeof window !== 'undefined' ? Cookies.get(AUTH_TOKEN_KEY) || null : null,
     authUser: null,
+    adminHospital: typeof window !== 'undefined' ? Cookies.get('ADMIN_HOSPITAL') || null : null,
     currentHospital: typeof window !== 'undefined' ? Cookies.get(CURRENT_HOSPITAL) || null : null,
     hospitalSetup: typeof window !== 'undefined' ? Cookies.get('SETUP_HOSPITAL') || false : false
 }
@@ -17,11 +18,12 @@ export interface StorePayload {
     storeAction: StoreAction
     storeToken?: string
     storeUser?: IUser,
+    adminHospital?:string,
     currentHospital?: string,
     hospitalSetup?: boolean
 }
 
-export type StoreAction = 'LOGIN' | 'LOGOUT' | 'AUTH_USER' | 'CURRENT_HOSPITAL' | 'SETUP_HOSPITAL'
+export type StoreAction = 'LOGIN' | 'LOGOUT' | 'AUTH_USER' | 'CURRENT_HOSPITAL' | 'SETUP_HOSPITAL' | 'ADMIN_HOSPITAL'
 
 const reducer = (state, action: StorePayload) => {
     switch (action.storeAction) {
@@ -37,6 +39,13 @@ const reducer = (state, action: StorePayload) => {
             return {
                 ...state,
                 authUser: authUser
+            }
+        case 'ADMIN_HOSPITAL':
+            const adminHospital = action.adminHospital
+            Cookies.set('ADMIN_HOSPITAL', adminHospital)
+            return {
+                ...state,
+                adminHospital: adminHospital
             }
         case 'CURRENT_HOSPITAL':
             const currentHospital = action.currentHospital
@@ -55,10 +64,12 @@ const reducer = (state, action: StorePayload) => {
             deleteCookie(AUTH_TOKEN_KEY)
             deleteCookie(CURRENT_HOSPITAL)
             deleteCookie('SETUP_HOSPITAL')
+            deleteCookie('ADMIN_HOSPITAL')
             return {
                 ...state,
                 authToken: null,
                 authUser: null,
+                adminHospital:null,
                 currentHospital: null,
                 hospitalSetup: false,
             }

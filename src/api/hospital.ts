@@ -13,6 +13,11 @@ export const getHospital = async ({queryKey}) => {
     return data;
 }
 
+export const getAdminHospitalByUserID = async ({queryKey}) => {
+    const {data} = await axios.get<IHospital>(`${apiRoutes.HOSPITALS}/getHospitalByManagedId/${queryKey[1]}`);
+    return data;
+}
+
 export const findHospitalsByIds = async ({queryKey}) => {
     const {data} = await axios.get<IHospital[]>(`${apiRoutes.HOSPITALS}/byHospitalIds`, {
         params: {hospitalIds: queryKey[1]}

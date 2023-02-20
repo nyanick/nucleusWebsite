@@ -5,15 +5,28 @@ import {useGetCurrentUser} from "../hooks/api/account";
 import {useStateValue} from "../contexts/AuthProvider";
 import {StorePayload} from "../contexts/auth-reducer";
 import {useToast} from "@chakra-ui/react";
+import {useFindAdminHospital} from "../hooks/api/hospital";
 
 interface Props {}
 
 const Layout: React.FC<Props> = ({children}) => {
     const toast = useToast()
     const {data} = useGetCurrentUser()
-    const [{currentHospital, hospitalSetup, authUser}, dispatch] = useStateValue();
+    const [{currentHospital, hospitalSetup, authUser, adminHospital}, dispatch] = useStateValue();
     const roles = authUser?.authorities || []
     const isDoctor = roles[0] === "ROLE_DOCTOR" || false
+    let {data: AdminHospital} =  useFindAdminHospital(authUser?.userId)
+
+    const isHospitalAdmin = roles[0] === "ROLE_ADMIN_HOSPITAL" || false
+
+    useEffect(() => {
+        if (isHospitalAdmin && AdminHospital && AdminHospital.hospitalId != "undefined" ) {
+            dispatch({
+                storeAction: 'ADMIN_HOSPITAL',
+                adminHospital: AdminHospital.hospitalId
+            } as StorePayload)
+        }
+    }, [AdminHospital, adminHospital])
 
     useEffect(() => {
         if (data) {
@@ -25,7 +38,7 @@ const Layout: React.FC<Props> = ({children}) => {
     }, [data])
 
     useEffect(() => {
-        if(currentHospital && !hospitalSetup) {
+        if(currentHospital && !hospitalSetup && currentHospital != "undefined") {
             toast({
                 title: "Hôpital en cours d'exercice",
                 position: 'top-right',

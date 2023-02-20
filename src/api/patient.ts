@@ -14,6 +14,6 @@ export const findPatientByPatientId = async ({queryKey}) => {
 }
 
 export const findPatientsByHospitalId = async ({queryKey}) => {
-    const {data} = await axios.get<IPatient[]>(`${apiRoutes.PATIENTS}/hospitals/${queryKey[1]}`);
+    const {data} = await axios.get<String[]>(`${apiRoutes.CONSULTATIONS}${apiRoutes.PATIENTS}/hospitals/${queryKey[1]}`);
     return data;
 }

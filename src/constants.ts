@@ -45,6 +45,6 @@ const userRoles = {
     ROLE_NURSE: 'ROLE_NURSE',
     ROLE_ANALYST: 'ROLE_ANALYST',
     ROLE_DOCTOR: 'ROLE_DOCTOR',
-    ROLE_ADMIN_HOPSITAL: 'ROLE_ADMIN_HOPSITAL'
+    ROLE_ADMIN_HOPSITAL: 'ROLE_ADMIN_HOSPITAL',
 }
 export {appRoutes, apiRoutes, userRoles}

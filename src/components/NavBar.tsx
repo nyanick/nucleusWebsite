@@ -10,7 +10,7 @@ import {StorePayload} from "../contexts/auth-reducer";
 import {useStateValue} from "../contexts/AuthProvider";
 import {useRouter} from "next/router";
 import Link from 'next/link'
-import {useFindDoctorHospitals} from "../hooks/api/hospital";
+import {useFindDoctorHospitals, useFindAdminHospital} from "../hooks/api/hospital";
 
 interface Props {
 
@@ -19,20 +19,33 @@ interface Props {
 const NavBar: React.FC<Props> = ({}) => {
     const router = useRouter()
     const [activeHospital, setActiveHospital] = useState(null)
-    const [{authUser, currentHospital}, dispatch] = useStateValue();
+    const [{authUser, currentHospital, adminHospital}, dispatch] = useStateValue();
     const roles = authUser?.authorities || []
     const isDoctor = roles[0] === "ROLE_DOCTOR" || false
     const nested = router.asPath.includes("/consultations") || router.asPath.includes("/medical-cares")
     const {data: doctorHospitals} = useFindDoctorHospitals(isDoctor, authUser?.userId)
+    let {data: AdminHospital} =  useFindAdminHospital(authUser?.userId)
 
+    const isHospitalAdmin = roles[0] === "ROLE_ADMIN_HOSPITAL" || false
     useEffect(() => {
-        if(currentHospital) {
+        if(currentHospital && currentHospital != "undefined") {
             setActiveHospital(JSON.parse(currentHospital))
         }
     }, [currentHospital])
 
+
     useEffect(() => {
-        if(authUser && doctorHospitals && !currentHospital) {
+        if(isHospitalAdmin && AdminHospital ) {
+            dispatch({
+                storeAction: 'ADMIN_HOSPITAL',
+                adminHospital: AdminHospital.hospitalId
+            } as StorePayload)
+        }
+    }, [AdminHospital, adminHospital,isHospitalAdmin])
+
+    console.log('AdminHospital', AdminHospital)
+    useEffect(() => {
+        if(authUser && doctorHospitals && !currentHospital && currentHospital == "undefined") {
             dispatch({
                 storeAction: 'CURRENT_HOSPITAL',
                 currentHospital: JSON.stringify(doctorHospitals[0])
@@ -86,6 +99,11 @@ const NavBar: React.FC<Props> = ({}) => {
                                     <div>
                                         <p className='font-medium text-gray-700'>{`${authUser.firstName} ${authUser.lastName}`}</p>
                                         <p className='text-sm'>{authUser.email}</p>
+                                        { isHospitalAdmin && AdminHospital && (
+                                            <>
+                                                <p className='font-medium text-gray-700'> { `Hospital : ${AdminHospital.name}`}</p>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </MenuItem>

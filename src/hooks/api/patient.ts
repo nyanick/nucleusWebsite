@@ -29,7 +29,7 @@ export const useFindPatientWithDetails = (patient: IPatient) => {
 }
 
 export const  useFindPatientByHospitalId = (hospitalId: string) => {
-    return useQuery(["hospitals", hospitalId], findPatientsByHospitalId, {
+    return useQuery(["consultations", hospitalId], findPatientsByHospitalId, {
         enabled: !!hospitalId
     })
 }

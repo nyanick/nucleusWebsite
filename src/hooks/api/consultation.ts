@@ -7,7 +7,8 @@ import {
     findConsultationsByHospital,
     findDoctorConsultations,
     findPatientConsultations,
-    updateConsultation
+    updateConsultation,
+    findConsultationsByHospitalByPatientUserId
 } from "../../api/consultation";
 
 export const useFindPatientConsultations = (patientUserId, size?, page?) => {
@@ -43,5 +44,11 @@ export const useCloseConsultation = () => {
 export const useFindConsultationsByHospital = (hospitalId: string) => {
     return useQuery(["consultations", hospitalId], findConsultationsByHospital, {
         enabled: !!hospitalId
+    })
+}
+
+export const useFindConsultationsByHospitalAndPatientUserID = (hospitalId: string, patientUserId: String) => {
+    return useQuery(["consultations", hospitalId, patientUserId], findConsultationsByHospitalByPatientUserId, {
+        enabled: !!hospitalId && !!patientUserId
     })
 }

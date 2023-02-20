@@ -56,3 +56,8 @@ export const findConsultationsByHospital = async ({queryKey}) => {
     const {data} = await axios.get<IConsultation[]>(`${apiRoutes.CONSULTATIONS}/hospital/${queryKey[1]}`);
     return data;
 }
+
+export const findConsultationsByHospitalByPatientUserId = async ({queryKey}) => {
+    const {data} = await axios.get<IConsultation[]>(`${apiRoutes.CONSULTATIONS}/patient/${queryKey[1]}/${queryKey[2]}`);
+    return data;
+}

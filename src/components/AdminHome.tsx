@@ -15,6 +15,7 @@ const AdminHome: React.FC<Props> = ({}) => {
         {title: 'Diagnotiques', url: '/diagnostics', Icon: FiActivity},
         {title: 'Annonces', url: '/advertisements', Icon: FiArchive},
     ];
+    console.log('inside the hospital Admin');
 
     return (
         <>
