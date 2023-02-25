@@ -28,7 +28,7 @@ const Nurses: NextPage = () => {
             sortable: true,
         },
         {
-            name: 'Phone',
+            name: 'Téléphone',
             selector: row => row.phoneNumber,
             sortable: true,
         }
@@ -61,9 +61,7 @@ const Nurses: NextPage = () => {
                 cslt.push(jointObjects)
             };
         }
-        console.log('cslt',cslt)
         if(cslt.length > 0){
-            console.log('inside here')
             setNurseList(cslt);
         }
         

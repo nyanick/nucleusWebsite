@@ -9,7 +9,7 @@ import moment from "moment";
 import { apiRoutes } from "../../constants";
 import { IConsultation } from "../../types/consultation";
 import { IDiagnosis } from "../../types/diagnosis";
-import {FiSettings, FiUsers} from "react-icons/fi";
+import {FiSettings, FiUsers, FiEye} from "react-icons/fi";
 import Link from "next/link";
 
 const DiagnosticsList: NextPage = ({}) => {
@@ -61,7 +61,7 @@ const DiagnosticsList: NextPage = ({}) => {
             sortable: true,
         },
         {
-            name: 'Phone',
+            name: 'Téléphone',
             selector: row => row.phoneNumber,
             sortable: true,
         },
@@ -84,13 +84,13 @@ const DiagnosticsList: NextPage = ({}) => {
                             <form onSubmit={addAnnoucement}>
                                 <div className="grid grid-cols-1 gap-6">
                                     <div className="mt-0">
-                                    <label className="block text-gray-700 text-sm font-bold ">Annoucement(s) </label>
+                                    <label className="block text-gray-700 text-sm font-bold ">Annonce(s) </label>
                                         <textarea id="about" name="about" rows="5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" ></textarea>
                                     </div>
 
                                     <div className="md:flex md:items-center ">
                                         <div >
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Add</button>
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Ajouter</button>
                                         </div>
                                     </div>
 
@@ -101,7 +101,7 @@ const DiagnosticsList: NextPage = ({}) => {
 
                     <div className='w-full border-x border-t rounded-lg'>
                         <DataTable
-                            title={[].length + " Annoucement"}
+                            title={[].length + " Annonce"}
                             columns={columns}
                             data={[]}
                             pagination

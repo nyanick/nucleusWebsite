@@ -23,7 +23,7 @@ const columns = [
     sortable: true,
   },
   {
-    name: 'Phone',
+    name: 'Téléphone',
     selector: row => row.phoneNumber,
     sortable: true,
   },
@@ -67,7 +67,6 @@ const Doctors: NextPage = ({}) => {
     }
     console.log('cslt',cslt)
     if(cslt.length > 0){
-        console.log('inside here')
         setDoctorList(cslt);
     }
 

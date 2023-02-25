@@ -75,7 +75,7 @@ const ConsultationList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div className="">
-                                <label className="block text-gray-700 text-sm font-bold ">Start Date:</label>
+                                <label className="block text-gray-700 text-sm font-bold ">Date de début:</label>
 
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ const ConsultationList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <label className="block text-gray-700 text-sm font-bold " >End Date:</label>
+                                    <label className="block text-gray-700 text-sm font-bold " >Date de fin:</label>
                                 </div>
                             </div>
 
@@ -101,7 +101,7 @@ const ConsultationList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Search</button>
+                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Recherche</button>
                                 </div>
                             </div>
                             
@@ -123,7 +123,7 @@ const ConsultationList: NextPage = ({}) => {
                                         <p className='text-white text-2xl'>{createdConsultation}</p>
                                     </div>
                                     <div className="flex justify-center">
-                                        <p className='text-white text-2xl'> Created Consultations </p>
+                                        <p className='text-white text-2xl'> Consultations créées </p>
                                     </div>
                                 </div>
                                 <div className="absolute bottom-0 left-0 right-0 h-12 hidden sm:block"
@@ -144,7 +144,7 @@ const ConsultationList: NextPage = ({}) => {
                                         <p className='text-white text-2xl'>{closedConsultation}</p>
                                     </div>
                                     <div className="flex justify-center">
-                                        <p className='text-white text-2xl'> Closed Consultations </p>
+                                        <p className='text-white text-2xl'> Consultations fermées </p>
                                     </div>
                                 </div>
                                 <div className="absolute bottom-0 left-0 right-0 h-12 hidden sm:block"

@@ -4,18 +4,22 @@ import DataTable from "react-data-table-component";
 import {useStateValue} from "../../contexts/AuthProvider";
 import {useFindUser} from "../../hooks/api/user";
 import {useFindDiagnosisByHospitalId} from "../../hooks/api/diagnosis";
-import axios from "axios";
+import axios from "../../api/axios";
 import moment from "moment";
 import { apiRoutes } from "../../constants";
 import { IConsultation } from "../../types/consultation";
 import { IDiagnosis } from "../../types/diagnosis";
-import {FiSettings, FiUsers} from "react-icons/fi";
+import {FiSettings, FiUsers,FiEye} from "react-icons/fi";
 import Link from "next/link";
+import {useRouter} from "next/router";
+
 
 const DiagnosticsList: NextPage = ({}) => {
     const [{authUser}] = useStateValue();
     const [{adminHospital}] = useStateValue();
     const [diagnosis, setDiagnosis] = useState([]);
+
+    const router = useRouter()
 
 
     const [formData, setFormData] = useState({
@@ -30,7 +34,6 @@ const DiagnosticsList: NextPage = ({}) => {
         let description = null;
 
         let diagnosis = await findDiagnostics(start_date, end_date, adminHospital, description);
-        console.log('diagnosis',diagnosis)
         setDiagnosis(diagnosis);
 
     },[ adminHospital, setDiagnosis]);
@@ -68,11 +71,11 @@ const DiagnosticsList: NextPage = ({}) => {
     const columns = [
         {
             name: 'Description',
-            selector: row => row.firstName + ' ' + row.lastName,
+            selector: row => row.description,
             sortable: true,
         },
         {
-            name: 'Updated Date',
+            name: 'Date de dernière mise à jour',
             selector: row => moment(row.updatedAt).toDate().toLocaleString(),
             sortable: true,
         },
@@ -89,6 +92,11 @@ const DiagnosticsList: NextPage = ({}) => {
             ),
         },
     ];
+
+    const handleButtonClick = (e, id) => {
+        e.preventDefault();
+        router.push(`/consultations/${id}`)
+    };
 
     return (
         <>
@@ -113,7 +121,7 @@ const DiagnosticsList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div className="">
-                                <label className="block text-gray-700 text-sm font-bold ">Start Date:</label>
+                                <label className="block text-gray-700 text-sm font-bold ">Date de début:</label>
 
                                 </div>
                             </div>
@@ -127,7 +135,7 @@ const DiagnosticsList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <label className="block text-gray-700 text-sm font-bold " >End Date:</label>
+                                    <label className="block text-gray-700 text-sm font-bold " >Date de fin:</label>
                                 </div>
                             </div>
 
@@ -139,7 +147,7 @@ const DiagnosticsList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Search</button>
+                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Recherche</button>
                                 </div>
                             </div>
                             
@@ -152,7 +160,7 @@ const DiagnosticsList: NextPage = ({}) => {
                 <div className='space-y-8'>
                     <div className='w-full border-x border-t rounded-lg'>
                         <DataTable
-                            title={diagnosis.length + " Diagnosis"}
+                            title={diagnosis.length + " Diagnostic"}
                             columns={columns}
                             data={diagnosis}
                             pagination

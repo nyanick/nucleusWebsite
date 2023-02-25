@@ -29,7 +29,7 @@ const PatientsList: NextPage = ({}) => {
             sortable: true,
         },
         {
-            name: 'Phone',
+            name: 'Téléphone',
             selector: row => row.phoneNumber,
             sortable: true,
         },

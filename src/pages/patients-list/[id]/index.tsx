@@ -38,13 +38,10 @@ const PatientsConsulationList: NextPage = ({}) => {
                     };
 
                     const jointObjects = {...doc,...user};
-                    console.log('jointObjects',jointObjects)
                     cslt.push(jointObjects)
                 };
             }
-            console.log('cslt',cslt)
             if(cslt.length > 0){
-                console.log('inside here')
                 setConsultList(cslt);
             }
         }
@@ -57,31 +54,31 @@ const PatientsConsulationList: NextPage = ({}) => {
 
     const columns = [
         {
-            name: 'Doctor Name',
+            name: 'Nom du médecin',
             selector: row => row.firstName + ' ' + row.lastName,
             sortable: true,
         },
         {
-            name: 'Created Date',
+            name: 'Date de création',
             selector: row => moment(row.createdAt).toDate().toLocaleString() ,
             sortable: true,
         },
         {
-            name: 'Updated Date',
+            name: 'Date de dernière mise à jour',
             selector: row => moment(row.updatedAt).toDate().toLocaleString(),
             sortable: true,
         },
         {
-            name: 'Status',
+            name: 'Statut',
             selector: row => row.status == 1 ? 
-                <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"> OPENED </button>
+                <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"> Ouvert</button>
              : 
-             <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"> CLOSED </button>
+             <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"> Fermé</button>
              ,
             sortable: false,
         },
         {
-            name: 'closed Date',
+            name: 'Date de clôture',
             selector: row => row.closedAt ? moment(row.closedAt).toDate().toLocaleString() : '',
             sortable: false,
         },

@@ -53,8 +53,6 @@ const MedicalCaresList: NextPage = ({}) => {
         console.log('formData',formData)
         let start_date = moment(formData.start_date, "yyyy-MM-ddTHH:mm").toISOString();
         let end_date =  moment(formData.end_date, "yyyy-MM-ddTHH:mm").toISOString();
-        console.log('start_date',start_date)
-        console.log('end_date',end_date)
 
         let medicalcares = await findMedicalCares(start_date, end_date, adminHospital);
         setMedicalCare (medicalcares);
@@ -70,7 +68,7 @@ const MedicalCaresList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div className="">
-                                <label className="block text-gray-700 text-sm font-bold ">Start Date:</label>
+                                <label className="block text-gray-700 text-sm font-bold ">Date de début:</label>
 
                                 </div>
                             </div>
@@ -84,7 +82,7 @@ const MedicalCaresList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <label className="block text-gray-700 text-sm font-bold " >End Date:</label>
+                                    <label className="block text-gray-700 text-sm font-bold " >Date de fin:</label>
                                 </div>
                             </div>
 
@@ -96,7 +94,7 @@ const MedicalCaresList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Search</button>
+                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Recherche</button>
                                 </div>
                             </div>
                             
@@ -118,7 +116,7 @@ const MedicalCaresList: NextPage = ({}) => {
                                         <p className='text-white text-2xl'>{medicalCare}</p>
                                     </div>
                                     <div className="flex justify-center">
-                                        <p className='text-white text-2xl'> Number of MedicalCares </p>
+                                        <p className='text-white text-2xl'> Nombre de soins médicaux </p>
                                     </div>
                                 </div>
                                 <div className="absolute bottom-0 left-0 right-0 h-12 hidden sm:block"
