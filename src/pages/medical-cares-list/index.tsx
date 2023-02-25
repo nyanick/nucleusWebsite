@@ -22,13 +22,13 @@ const MedicalCaresList: NextPage = ({}) => {
         end_date: ""
     });
 
-    useEffect(async ()=> {
-        let start_date = null;
-        let end_date = null;
+    // useEffect(async ()=> {
+    //     let start_date = null;
+    //     let end_date = null;
 
-        let medicalcares = await findMedicalCares(start_date, end_date, adminHospital);
-        setMedicalCare (medicalcares);
-    },[]);
+    //     let medicalcares = await findMedicalCares(start_date, end_date, adminHospital);
+    //     setMedicalCare (medicalcares);
+    // },[]);
 
 
     const handleInput = (e) => {
@@ -94,7 +94,7 @@ const MedicalCaresList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Recherche</button>
+                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline"  type="submit">Recherche</button>
                                 </div>
                             </div>
                             

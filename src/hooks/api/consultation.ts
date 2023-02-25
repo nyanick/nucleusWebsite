@@ -47,8 +47,4 @@ export const useFindConsultationsByHospital = (hospitalId: string) => {
     })
 }
 
-export const useFindConsultationsByHospitalAndPatientUserID = (hospitalId: string, patientUserId: String) => {
-    return useQuery(["consultations", hospitalId, patientUserId], findConsultationsByHospitalByPatientUserId, {
-        enabled: !!hospitalId && !!patientUserId
-    })
-}
+

@@ -101,7 +101,7 @@ const NavBar: React.FC<Props> = ({}) => {
                                         <p className='text-sm'>{authUser.email}</p>
                                         { isHospitalAdmin && AdminHospital && (
                                             <>
-                                                <p className='font-medium text-gray-700'> { `Hospital : ${AdminHospital.name}`}</p>
+                                                <p className='font-medium text-gray-700'> { `Hôpital : ${AdminHospital.name}`}</p>
                                             </>
                                         )}
                                     </div>

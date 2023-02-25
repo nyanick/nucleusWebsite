@@ -21,31 +21,33 @@ const PatientsConsulationList: NextPage = ({}) => {
     const [consultation, setConsultations] = useState(null)
     const[consultList, setConsultList] = useState([]);
     
-    useEffect(async () => {
-        setpatientUserId(router.query.id)
-        if(adminHospital && patientUserId && consultList.length == 0){
-            let {data : consult} = await useFindConsultationsByHospitalAndPatientUserID(adminHospital, patientUserId) 
-            let cslt = [];
-            if(consult && consult.length >0){
-                for(let i =0; consult && i < consult.length ; i++){
-                    let doc = consult[i];
-                    const uid = doc.doctorUserId;
-                    const repo = await getUserById(uid);
-                    let user = {
-                        firstName : repo.data.firstName, 
-                        lastName : repo.data.lastName, 
-                    
-                    };
+    useEffect( () => {
+        async function fetchData() {
+            setpatientUserId(router.query.id)
+            if(adminHospital && patientUserId && consultList.length == 0){
+                let {data : consult} = await FindConsultationsByHospitalAndPatientUserID(adminHospital, patientUserId) 
+                let cslt = [];
+                if(consult && consult.length >0){
+                    for(let i =0; consult && i < consult.length ; i++){
+                        let doc = consult[i];
+                        const uid = doc.doctorUserId;
+                        const repo = await getUserById(uid);
+                        let user = {
+                            firstName : repo.data.firstName, 
+                            lastName : repo.data.lastName, 
+                        
+                        };
 
-                    const jointObjects = {...doc,...user};
-                    cslt.push(jointObjects)
-                };
-            }
-            if(cslt.length > 0){
-                setConsultList(cslt);
+                        const jointObjects = {...doc,...user};
+                        cslt.push(jointObjects)
+                    };
+                }
+                if(cslt.length > 0){
+                    setConsultList(cslt);
+                }
             }
         }
-        
+        fetchData();
         
       },[router, adminHospital, patientUserId, consultList, setConsultList]);
 
@@ -55,22 +57,22 @@ const PatientsConsulationList: NextPage = ({}) => {
     const columns = [
         {
             name: 'Nom du médecin',
-            selector: row => row.firstName + ' ' + row.lastName,
+            cell: row => row.firstName + ' ' + row.lastName,
             sortable: true,
         },
         {
             name: 'Date de création',
-            selector: row => moment(row.createdAt).toDate().toLocaleString() ,
+            cell: row => moment(row.createdAt).toDate().toLocaleString() ,
             sortable: true,
         },
         {
             name: 'Date de dernière mise à jour',
-            selector: row => moment(row.updatedAt).toDate().toLocaleString(),
+            cell: row => moment(row.updatedAt).toDate().toLocaleString(),
             sortable: true,
         },
         {
             name: 'Statut',
-            selector: row => row.status == 1 ? 
+            cell: row => row.status == 1 ? 
                 <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"> Ouvert</button>
              : 
              <button className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"> Fermé</button>
@@ -79,12 +81,11 @@ const PatientsConsulationList: NextPage = ({}) => {
         },
         {
             name: 'Date de clôture',
-            selector: row => row.closedAt ? moment(row.closedAt).toDate().toLocaleString() : '',
+            cell: row => row.closedAt ? moment(row.closedAt).toDate().toLocaleString() : '',
             sortable: false,
         },
         {
             name: "Consultations",
-            button: true,
             cell: (row) => (
                 <button
                     className="btn btn-outline btn-xs"
@@ -93,6 +94,7 @@ const PatientsConsulationList: NextPage = ({}) => {
                     <FiEye/>
                 </button>
             ),
+            sortable: false,
         }
     ];
 
@@ -120,7 +122,7 @@ const PatientsConsulationList: NextPage = ({}) => {
 };
 
 
-const useFindConsultationsByHospitalAndPatientUserID = async (adminHospital, patientUserId) =>{
+const FindConsultationsByHospitalAndPatientUserID = async (adminHospital, patientUserId) =>{
     //if adminHost
     if(!adminHospital || !patientUserId){
       return {data:[]};

@@ -44,7 +44,7 @@ const PatientsList: NextPage = ({}) => {
             sortable: false,
         },
         {
-            name: 'Place Of Birth',
+            name: 'Lieu de naissance',
             selector: row => row.placeOfBirth,
             sortable: false,
         },

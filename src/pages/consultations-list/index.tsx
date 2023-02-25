@@ -23,15 +23,19 @@ const ConsultationList: NextPage = ({}) => {
         end_date: ""
     });
 
-    useEffect(async ()=> {
-        let start_date = null;
-        let end_date = null;
-
-        let create_cons = await findCreatedConsultations(start_date, end_date, adminHospital);
-        let closed_cons = await findClosedConsultations(start_date, end_date, adminHospital);
-        setCreatedConsultation(create_cons);
-        setClosedConsultation (closed_cons);
-    },[]);
+    // useEffect(()=> {
+    //     async function fetchData() {
+    //         let start_date = null;
+    //         let end_date = null;
+    
+    //         let create_cons = await findCreatedConsultations(start_date, end_date, adminHospital);
+    //         let closed_cons = await findClosedConsultations(start_date, end_date, adminHospital);
+    //         setCreatedConsultation(create_cons);
+    //         setClosedConsultation (closed_cons);
+    //     }
+    //     fetchData();
+        
+    // },[]);
 
 
     const handleInput = (e) => {
@@ -101,7 +105,7 @@ const ConsultationList: NextPage = ({}) => {
 
                             <div className="md:flex md:items-center ">
                                 <div >
-                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline" type="button" type="submit">Recherche</button>
+                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline"  type="submit">Recherche</button>
                                 </div>
                             </div>
                             
