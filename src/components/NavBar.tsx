@@ -43,9 +43,8 @@ const NavBar: React.FC<Props> = ({}) => {
         }
     }, [AdminHospital, adminHospital,isHospitalAdmin])
 
-    console.log('AdminHospital', AdminHospital)
     useEffect(() => {
-        if(authUser && doctorHospitals && !currentHospital && currentHospital == "undefined") {
+        if(authUser && doctorHospitals && ( !currentHospital || currentHospital == "undefined")) {
             dispatch({
                 storeAction: 'CURRENT_HOSPITAL',
                 currentHospital: JSON.stringify(doctorHospitals[0])
@@ -53,6 +52,7 @@ const NavBar: React.FC<Props> = ({}) => {
             setActiveHospital(doctorHospitals[0])
         }
     }, [authUser, currentHospital, doctorHospitals])
+
 
     const logout = async () => {
         dispatch({
