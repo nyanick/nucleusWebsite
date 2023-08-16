@@ -9,6 +9,6 @@ export const getCurrentUser = async () => {
 }
 
 export const login = async (login: ILogin) => {
-    const {data} = await axios.post<ILoginResponse>(`${apiRoutes.USERS}/login`, login);
+    const {data} = await axios.post<ILoginResponse>(`${apiRoutes.USERS}/users/login`, login);
     return data;
 }

@@ -13,7 +13,7 @@ const appRoutes = {
 const apiRoutes = {
     GET_PATIENTS: '/patients',
     GET_ADMINS: '/users/admins',
-    USERS: '/users',
+    USERS: '/user-consultation',
     PATIENTS: '/patients',
     DOCTORS: '/doctors',
     NURSES: '/nurses',
