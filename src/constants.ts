@@ -18,7 +18,7 @@ const apiRoutes = {
     DOCTORS: '/nucleus-personnel/doctors',
     NURSES: '/nucleus-personnel/nurses',
     CONSULTATIONS: '/user-consultation/consultations',
-    MEDICAL_CARES: '/medical-cares',
+    MEDICAL_CARES: '/nurses/medical-cares',
     OBSERVATIONS: '/user-consultation/consultations/observations',
     HOSPITALS: '/system-nucleus/hospitals',
     DIAGNOSIS: '/user-consultation/consultations/diagnosis',
@@ -27,7 +27,7 @@ const apiRoutes = {
     GET_ANALYSTS: '/system-nucleus/analysts',
     GET_DOCTORS: '/nucleus-personnel/doctors',
     GET_NURSES: '/nucleus-personnel/nurses',
-    GET_SPECIALITIES: '/specialities',
+    GET_SPECIALITIES: '/nucleus-personnel/specialities',
     GET_AUTHORITIES: '/user-consultation/users/authorities',
     GET_CURRENT_USER: '/user-consultation/users/account',
     GET_DOCTOR: (id) => `/nucleus-personnel/doctors/${id}`,
@@ -38,7 +38,7 @@ const apiRoutes = {
     GET_USER: (id) => `/user-consultation/users/${id}`,
     LOGIN: '/user-consultation/users/login',
     GET_USER_AVATAR: (uuid) => `${process.env.NEXT_PUBLIC_API_URL}/files/${uuid}`,
-    MEDICAL_CARES_LIST: '/medical-cares-list',
+    MEDICAL_CARES_LIST: '/nucleus-personnel/medical-cares-list'
 }
 const userRoles = {
     ROLE_PATIENT: 'ROLE_PATIENT',
