@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {IPrescription, IPrescriptionCreate} from "../types/prescription";
 
 interface Props {
@@ -78,7 +79,7 @@ export class PrescriptionService {
     getAll() {
         this.setLoading(true)
         axios.get<IPrescription[]>(
-            `/consultations/prescriptions/consultation/${this.consultationId}`,
+            `${apiRoutes.CONSULTATIONS}/prescriptions/consultation/${this.consultationId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setItemsCount(parseInt(res.headers['x-total-count']));
@@ -94,7 +95,7 @@ export class PrescriptionService {
         if (this.setLoading)
             this.setLoading(true)
         axios.get<IPrescription>(
-            `/consultations/prescriptions/${prescriptionId}`,
+            `${apiRoutes.CONSULTATIONS}/prescriptions/${prescriptionId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setPrescription(res.data);
@@ -110,7 +111,7 @@ export class PrescriptionService {
         if (this.setCreatePrescription)
             this.setCreatePrescription(true)
         axios.post<IPrescription>(
-            `/consultations/prescriptions`,
+            `${apiRoutes.CONSULTATIONS}/prescriptions`,
             prescriptionCreate,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -127,7 +128,7 @@ export class PrescriptionService {
         if (this.setUpdatePrescription)
             this.setUpdatePrescription(true)
         axios.put<IPrescription>(
-            `/consultations/prescriptions`,
+            `${apiRoutes.CONSULTATIONS}/prescriptions`,
             prescription,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -144,7 +145,7 @@ export class PrescriptionService {
         if (this.setDeletePrescription)
             this.setDeletePrescription(true)
         axios.delete<IPrescription>(
-            `/consultations/prescriptions/${prescriptionId}`,
+            `${apiRoutes.CONSULTATIONS}/prescriptions/${prescriptionId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setDeleted(true);

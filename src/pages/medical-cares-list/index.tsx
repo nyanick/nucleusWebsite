@@ -137,7 +137,7 @@ const findMedicalCares = async (start_date, end_date,adminHospital) =>{
     if(!start_date || !end_date || !adminHospital){
         return 0;
     }
-    let medicalcares=  await axios.get<IMedicalCare[]>(`${apiRoutes.NURSES}/${apiRoutes.MEDICAL_CARES}/hospitalInPeriod/${adminHospital}`,{
+    let medicalcares=  await axios.get<IMedicalCare[]>(`${apiRoutes.NURSES}/medical-cares/hospitalInPeriod/${adminHospital}`,{
         params: {start_date: start_date, end_date: end_date}
     });
     if(medicalcares && medicalcares.data){

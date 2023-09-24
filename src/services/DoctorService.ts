@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {IDoctor, IDoctorWithDetails} from "../types/doctor";
 
 interface Props {
@@ -25,7 +26,7 @@ export class DoctorService {
         if (this.setLoading)
             this.setLoading(true)
         axios.get<IDoctor>(
-            `/doctors/user/${userId}`,
+            `${apiRoutes.DOCTORS}/user/${userId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setDoctor(res.data);

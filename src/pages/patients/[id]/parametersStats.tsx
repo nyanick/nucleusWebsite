@@ -38,9 +38,9 @@ const Parameters: NextPage = ({}) => {
     const router = useRouter()
     const {data: medicalCares} = useFindPatientMedicalCares(router.query.id)
     let medicalCareId = "" ;
-    if(medicalCares){
+    if(medicalCares ){
         let len = medicalCares.medicalCares.length -1;
-        medicalCareId = medicalCares.medicalCares[len].medicalCareId;
+        medicalCareId = medicalCares.medicalCares[len]?.medicalCareId;
     }
     const {error: parametersLoadingError, data, isLoading: loadingParameters} = useFindMedicalCareParameters(medicalCareId as string);
     const toast = useToast()

@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {IUser} from "../types/user";
 
 interface Props {
@@ -28,7 +29,7 @@ export class UserService {
     getAll() {
         this.setLoading(true)
         axios.get<IUser[]>(
-            "/users",
+            "${apiRoutes.USERS}",
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setUsers(res.data);
@@ -42,7 +43,7 @@ export class UserService {
     get(userId: string) {
         this.setLoading(true)
         axios.get<IUser>(
-            `/users/${userId}`,
+            `${apiRoutes.USERS}/${userId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setUser(res.data);

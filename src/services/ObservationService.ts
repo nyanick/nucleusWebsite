@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {IObservation, IObservationCreate} from "../types/observation";
 
 interface Props {
@@ -74,7 +75,7 @@ export class ObservationService {
     getAll() {
         this.setLoading(true)
         axios.get<IObservation[]>(
-            `/consultations/observations/consultation/${this.consultationId}`,
+            `${apiRoutes.CONSULTATIONS}/observations/consultation/${this.consultationId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setObservations(res.data);
@@ -89,7 +90,7 @@ export class ObservationService {
         if (this.setLoading)
             this.setLoading(true)
         axios.get<IObservation>(
-            `/consultations/observations/${observationId}`,
+            `${apiRoutes.CONSULTATIONS}/observations/${observationId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setObservation(res.data);
@@ -105,7 +106,7 @@ export class ObservationService {
         if (this.setCreateObservation)
             this.setCreateObservation(true)
         axios.post<IObservation>(
-            `/consultations/observations`,
+            `${apiRoutes.CONSULTATIONS}/observations`,
             observationCreate,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -122,7 +123,7 @@ export class ObservationService {
         if (this.setUpdateObservation)
             this.setUpdateObservation(true)
         axios.put<IObservation>(
-            `/consultations/observations`,
+            `${apiRoutes.CONSULTATIONS}/observations`,
             observation,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -139,7 +140,7 @@ export class ObservationService {
         if (this.setDeleteObservation)
             this.setDeleteObservation(true)
         axios.delete<IObservation>(
-            `/consultations/observations/${observationId}`,
+            `${apiRoutes.CONSULTATIONS}/observations/${observationId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setDeleted(true);

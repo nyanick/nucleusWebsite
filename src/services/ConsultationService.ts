@@ -4,6 +4,7 @@ import {ISymptom} from "../types/symptom";
 import {IGroup} from "../types/group";
 import {IExam} from "../types/exam";
 import {ICategory} from "../types/category";
+import { apiRoutes } from "../constants";
 
 interface Props {
     authToken: string
@@ -134,7 +135,7 @@ export class ConsultationService {
     getAll(doctorUserId: string) {
         this.setLoadingConsultations(true)
         axios.get<IConsultation[]>(
-            `/consultations/doctor/${doctorUserId}`,
+            `${apiRoutes.CONSULTATIONS}/doctor/${doctorUserId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setConsultations(res.data);
@@ -152,7 +153,7 @@ export class ConsultationService {
             Authorization: `Bearer ${this.authToken}`
         };
         axios.get<IExam[]>(
-            "/consultations/exams",
+            `${apiRoutes.CONSULTATIONS}/exams`,
             {params: params}
         ).then((res) => {
             this.setExams(res.data);
@@ -166,7 +167,7 @@ export class ConsultationService {
     findExamsByIds(examIds: string[]) {
         this.setLoadingExams(true)
         axios.get<IExam[]>(
-            `/consultations/exams/${examIds}/details`,
+            `${apiRoutes.CONSULTATIONS}/exams/${examIds}/details`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setExams(res.data);
@@ -180,7 +181,7 @@ export class ConsultationService {
     findSymptomsByIds(symptomIds: string[]) {
         this.setLoadingSymptoms(true)
         axios.get<ISymptom[]>(
-            `/consultations/symptoms/${symptomIds}/details`,
+            `${apiRoutes.CONSULTATIONS}/symptoms/${symptomIds}/details`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setSymptoms(res.data);
@@ -198,7 +199,7 @@ export class ConsultationService {
             Authorization: `Bearer ${this.authToken}`
         };
         axios.get<ISymptom[]>(
-            "/consultations/symptoms",
+            `${apiRoutes.CONSULTATIONS}/symptoms`,
             {params: params}
         ).then((res) => {
             this.setSymptoms(res.data);
@@ -212,7 +213,7 @@ export class ConsultationService {
     getExamGroups() {
         this.setLoadingExamGroups(true)
         axios.get<IGroup[]>(
-            "/consultations/groups",
+            `${apiRoutes.CONSULTATIONS}/groups`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setExamGroups(res.data);
@@ -226,7 +227,7 @@ export class ConsultationService {
     getExamCategories() {
         this.setLoadingExamCategories(true)
         axios.get<ICategory[]>(
-            "/consultations/categories",
+            `${apiRoutes.CONSULTATIONS}/categories`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setExamCategories(res.data);
@@ -240,7 +241,7 @@ export class ConsultationService {
     get(consultationId: string) {
         this.setLoadingConsultation(true)
         axios.get<IConsultation>(
-            `/consultations/${consultationId}`,
+            `${apiRoutes.CONSULTATIONS}/${consultationId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setConsultation(res.data);
@@ -255,7 +256,7 @@ export class ConsultationService {
     update(consultation: IConsultation) {
         this.setUpdatingConsultation(true)
         axios.put<IConsultation>(
-            '/consultations',
+            apiRoutes.CONSULTATIONS,
             consultation,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -272,7 +273,7 @@ export class ConsultationService {
         this.setConsultationCloseError(null)
         this.setConsultationCloseSuccess(false)
         axios.put(
-            `/consultations/${consultationId}/close`,
+            `${apiRoutes.CONSULTATIONS}/${consultationId}/close`,
             null,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -288,7 +289,7 @@ export class ConsultationService {
     createConsultation(consultationCreate: IConsultationCreate) {
         this.setCreatingConsultation(true)
         axios.post<IConsultation>(
-            `/consultations`,
+            `${apiRoutes.CONSULTATIONS}`,
             consultationCreate,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {

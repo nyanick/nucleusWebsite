@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {ISymptom} from "../types/symptom";
 
 interface Props {
@@ -54,7 +55,7 @@ export class SymptomService {
     getAll() {
         this.setLoading(true)
         axios.get<ISymptom[]>(
-            `/consultations/${this.consultationId}/symptoms`,
+            `${apiRoutes.CONSULTATIONS}/${this.consultationId}/symptoms`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setSymptoms(res.data);
@@ -69,7 +70,7 @@ export class SymptomService {
         if (this.setUpdateSymptoms)
             this.setUpdateSymptoms(true)
         axios.put<ISymptom[]>(
-            `/consultations/${this.consultationId}/symptoms`,
+            `${apiRoutes.CONSULTATIONS}/${this.consultationId}/symptoms`,
             symptoms,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {

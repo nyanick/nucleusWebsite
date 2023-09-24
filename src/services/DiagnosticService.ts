@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {IDiagnosis, IDiagnosisCreate} from "../types/diagnosis";
 
 interface Props {
@@ -78,7 +79,7 @@ export class DiagnosticService {
     getAll() {
         this.setLoading(true)
         axios.get<IDiagnosis[]>(
-            `/consultations/diagnosis/consultation/${this.consultationId}`,
+            `${apiRoutes.CONSULTATIONS}/diagnosis/consultation/${this.consultationId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setItemsCount(parseInt(res.headers['x-total-count']));
@@ -94,7 +95,7 @@ export class DiagnosticService {
         if (this.setLoading)
             this.setLoading(true)
         axios.get<IDiagnosis>(
-            `/consultations/diagnosis/${diagnosticId}`,
+            `${apiRoutes.CONSULTATIONS}/diagnosis/${diagnosticId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setDiagnostic(res.data);
@@ -110,7 +111,7 @@ export class DiagnosticService {
         if (this.setCreateDiagnostic)
             this.setCreateDiagnostic(true)
         axios.post<IDiagnosis>(
-            `/consultations/diagnosis`,
+            `${apiRoutes.CONSULTATIONS}/diagnosis`,
             diagnosticCreate,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -127,7 +128,7 @@ export class DiagnosticService {
         if (this.setUpdateDiagnostic)
             this.setUpdateDiagnostic(true)
         axios.put<IDiagnosis>(
-            `/consultations/diagnosis`,
+            `${apiRoutes.CONSULTATIONS}/diagnosis`,
             diagnostic,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
@@ -144,7 +145,7 @@ export class DiagnosticService {
         if (this.setDeleteDiagnostic)
             this.setDeleteDiagnostic(true)
         axios.delete<IDiagnosis>(
-            `/consultations/diagnostics/${diagnosticId}`,
+            `${apiRoutes.CONSULTATIONS}/diagnostics/${diagnosticId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setDeleted(true);

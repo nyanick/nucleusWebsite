@@ -1,4 +1,5 @@
 import axios from "../api/axios";
+import { apiRoutes } from "../constants";
 import {IPatient, IPatientWithDetails} from "../types/patient";
 
 interface Props {
@@ -25,7 +26,7 @@ export class PatientService {
         if (this.setLoading)
             this.setLoading(true)
         axios.get<IPatientWithDetails>(
-            `/patients/${userId}/details`,
+            `${apiRoutes.PATIENTS}/${userId}/details`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setPatient(res.data);
@@ -41,7 +42,7 @@ export class PatientService {
         if (this.setLoading)
             this.setLoading(true)
         axios.get<IPatient>(
-            `/patients/${patientId}`,
+            `${apiRoutes.PATIENTS}/${patientId}`,
             {headers: {'Authorization': `Bearer ${this.authToken}`}}
         ).then((res) => {
             this.setPatient(res.data);
