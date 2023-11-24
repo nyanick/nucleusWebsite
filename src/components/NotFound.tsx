@@ -17,7 +17,7 @@ const NotFound: React.FC<Props> = ({fallBackUrl}) => {
             </div>
             <div className='max-w-sm'>
                 <h1 className='font-bold text-lg text-center'>Cette page n&apos;est pas disponible</h1>
-                <p className='text-center text-sm'> C'est possible que le lien ait pu changer ou que la page soit encore en cours de développement.</p>
+                <p className='text-center text-sm'> C&apos;est possible que le lien ait pu changer ou que la page soit encore en cours de développement.</p>
             </div>
             <div className='mt-2'>
                 <Link href={fallBackUrl}>
