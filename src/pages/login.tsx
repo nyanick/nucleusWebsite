@@ -22,6 +22,16 @@ const Login: NextPage = ({}) => {
                 router.push('/').then()
             }
         }
+        else{
+            toast({
+                position: 'bottom',
+                title: "Echec d'authentification",
+                description: "Nom d'utilisateur ou mot de passe incorrect",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            })
+        }
     }, [data])
 
     useEffect(() => {
