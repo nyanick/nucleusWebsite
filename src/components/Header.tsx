@@ -1,4 +1,4 @@
-import { Box, Flex} from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import Image from 'next/image';
 import React from "react";
 
@@ -24,7 +24,13 @@ const Header: React.FC<HeaderProps> = ({ }) => {
                 mx='auto'
                 justifyContent='space-between'
                 alignItems='center'>
-                <Image width={124} height={42} alt='Logo' src='/images/logo.png' />
+                <Image 
+                    width={124} 
+                    height={42} 
+                    alt='Logo' 
+                    src='/images/logo.png'
+                    unoptimized 
+                />
                 <a className='transition-colors bg-[#0070F3] px-3 py-2 rounded-md hover:border hover:border-[#0070F3] hover:bg-white text-white text-sm font-normal hover:text-[#0070F3]' href="/contact">Support Client</a>
             </Flex>
         </Box>

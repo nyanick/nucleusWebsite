@@ -94,7 +94,7 @@ const Parameters: NextPage = ({}) => {
                                 onClick={() => router.push(`/medical-cares/${router.query.id}/parametersStats`)}
                                 className='flex justify-center items-center bg-white px-6 py-1.5 border rounded-full text-gray-600 font-medium hover:text-gray-700 hover:border-2 transition-all hover:border-gray-500 hover:text-gray-700'>
                                 <PresentationChartLineIcon className='h-5 w-5 mr-3'/>
-                                Show Stats
+                                Afficher les paramètres
                             </button>
                         </div>
                     )}
