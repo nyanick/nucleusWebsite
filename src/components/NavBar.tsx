@@ -75,7 +75,7 @@ const NavBar: React.FC<Props> = ({}) => {
                 className={`flex w-full h-full my-3 bg-white min-h-full justify-between items-center ${nested ? 'max-w-5xl mx-auto' : 'px-16'}`}>
                 <Link href='/'>
                     <a>
-                        <Image className='cursor-pointer' width={124} height={42} alt='Logo' src='/images/logo.png'/>
+                        <Image className='cursor-pointer' width={124} height={42} alt='Logo' src='/images/logo.png' unoptimized/>
                     </a>
                 </Link>
                 {authUser && <div className='flex items-center'>
